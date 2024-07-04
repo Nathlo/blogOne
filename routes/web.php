@@ -1,11 +1,19 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// list all posts
+Route::get('/', [PostController::class, 'index'])->name('blog.index');
+// show a specified post
+Route::get('/post/{id}', [PostController::class, 'show'])->name('blog.show');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
